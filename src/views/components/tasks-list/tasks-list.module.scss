@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.taskslist {
+.taskslist { max-height: 380px; overflow: auto;
   &-item { border: 1px solid $light-gray; padding: 10px; margin-bottom: 15px; border-radius: 4px; min-height: 40px;
     background-color: $main; color: $white; box-shadow: 3px 3px 10px $light-gray; display: flex; justify-content: space-between;
     align-items: center;
