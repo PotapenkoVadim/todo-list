@@ -19,8 +19,12 @@ export default function ConfirmationModal(): JSX.Element {
       className={`${styles['confirmation']} ${isShow ? styles['confirmation__isShow'] : ''}`}>
       <Modal title={confirmActions?.title}>
         <div className={styles['confirmation-actions']}>
-          <Button onClick={confirmActions?.confirmAction}>Confirm</Button>
-          <Button onClick={confirmActions?.cancelAction} type='secondary'>Cancel</Button>
+          <Button className={styles['confirmation-button']} onClick={confirmActions?.confirmAction}>
+            Confirm
+          </Button>
+          <Button className={styles['confirmation-button']} onClick={confirmActions?.cancelAction} type='secondary'>
+            Cancel
+          </Button>
         </div>
       </Modal>
     </div>

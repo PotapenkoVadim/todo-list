@@ -25,7 +25,7 @@ export default function UpdateTaskModal(): JSX.Element {
       onClick={closeUpdateTaskModal}
       data-type='modal'
       className={`${styles['updatetask']} ${isShow ? styles['updatetask__isShow'] : ''}`}>
-      <Modal title='Update task'>
+      <Modal className={styles['updatetask-content']} title='Update task'>
         <TaskForm task={task} onSubmit={handleSubmit} />
       </Modal>
     </div>
