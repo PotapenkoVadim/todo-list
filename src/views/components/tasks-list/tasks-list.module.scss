@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.taskslist {
+  &-item { border: 1px solid $light-gray; padding: 10px; margin-bottom: 15px; border-radius: 4px; min-height: 40px;
+    background-color: $main; color: $white; box-shadow: 3px 3px 10px $light-gray; display: flex; justify-content: space-between;
+    align-items: center;
+
+    &-title { font-size: 1.1rem; font-weight: bold; user-select: none; }
+    &-title_underline { text-decoration: line-through; }
+    &-actions { display: flex; justify-content: space-around; align-items: center; gap: 10px; }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../styles/variables.scss';
+
+.form {
+  &-group { position: relative; }
+  &-control {border: 1px solid $light-gray; box-sizing: border-box; border-radius: 4px; font-family: Gilroy, Arial, sans-serif;
+    line-height: 14px; padding: 0.8rem 0.64rem 0.4rem; width: 100%; outline: none; color: $black; font-size: 1rem;
+    transition: all 0.3s; text-overflow: ellipsis; position: relative;
+    -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important;
+  }
+  &-label {position: absolute; left: 0; top: -8px; font-size: 1rem; color: gray; line-height: 1;
+    transform-origin: 0 0; font-weight: 300; transition: all 0.3s;  padding: 4px 9px;
+    transform: translate3d(0,18px,0); pointer-events: none; white-space: nowrap; z-index: 0;
+    .form-control__filled ~ &, .form-control:focus ~ & {transform: translate3d(0,0,0) scale(0.85); left: 4px; padding: 0.6rem 3.2rem 0.14rem 0.5rem; }
+  }
+
+  &-checkboxlabel { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
+}

@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+.button { display: block; padding: 5px 20px; height: 40px; border-radius: 3px; font-size: 1.1rem; font-weight: bold;
+  font-style: normal;  border: 1px solid $light-gray;
+  outline: none; cursor: pointer; white-space: nowrap; box-sizing: border-box; position:relative;
+  &-primary { color: $white; background: $main; }
+  &-secondary { color: $white; background-color: $secondary; }
+
+  &:hover { opacity: 0.9; }
+}

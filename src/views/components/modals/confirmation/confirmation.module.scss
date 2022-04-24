@@ -1,0 +1,6 @@
+@import '../../../styles/variables.scss';
+
+.confirmation { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(50, 50, 50, 0.5); z-index: 999; display: none;
+  &__isShow { display: block; }
+  &-actions { display: flex; align-items: center; justify-content: center; gap: 50px; padding: 20px 0; }
+}
