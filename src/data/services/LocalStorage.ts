@@ -6,8 +6,6 @@ export class LocalStorageService {
   }
 
   public static save(key: string, value: unknown): void {
-    console.log('SAVE', value)
-    console.log('SAVE', JSON.stringify(value))
     return localStorage.setItem(key, JSON.stringify(value));
   }
 
