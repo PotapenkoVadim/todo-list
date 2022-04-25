@@ -7,9 +7,10 @@ import TasksList from '../components/tasks-list/tasks-list';
 import UpdateTaskModal from '../components/modals/update-task/update-task';
 import ConfirmationModal from '../components/modals/confirmation/confirmation';
 import configuration from '../../data/configuration';
+import { useEffect } from 'react';
 
 export default function App(): JSX.Element {
-  const [tasks, createTask] = useTodoStore((state) => [state.tasks, state.createTask]);
+  const [tasks, createTask, init] = useTodoStore((state) => [state.tasks, state.createTask, state.init]);
 
   const createNewTask = (credentialsTask: Task): void => {
     const newTask = new Task({
@@ -21,6 +22,8 @@ export default function App(): JSX.Element {
 
     createTask(newTask);
   };
+
+  useEffect(() => init(), []);
 
   return (
     <main className={styles['app']}>
