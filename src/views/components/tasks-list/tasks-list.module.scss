@@ -8,5 +8,6 @@
     &-title { font-size: 1.1rem; font-weight: bold; user-select: none; }
     &-title_underline { text-decoration: line-through; }
     &-actions { display: flex; justify-content: space-around; align-items: center; gap: 10px; }
+    &-button { padding: 0; }
   }
 }

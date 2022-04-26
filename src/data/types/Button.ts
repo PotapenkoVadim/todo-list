@@ -1,3 +1,4 @@
 export type ButtonType =
   | 'primary'
-  | 'secondary';
+  | 'secondary'
+  | 'outline';

@@ -5,6 +5,7 @@
   outline: none; cursor: pointer; white-space: nowrap; box-sizing: border-box; position:relative;
   &-primary { color: $white; background: $main; }
   &-secondary { color: $white; background-color: $secondary; }
+  &-outline { border: none; background-color: inherit; color: $white; }
 
   &:hover { opacity: 0.9; }
 }

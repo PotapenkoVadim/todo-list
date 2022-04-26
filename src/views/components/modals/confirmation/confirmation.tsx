@@ -22,7 +22,7 @@ export default function ConfirmationModal(): JSX.Element {
           <Button className={styles['confirmation-button']} onClick={confirmActions?.confirmAction}>
             Confirm
           </Button>
-          <Button className={styles['confirmation-button']} onClick={confirmActions?.cancelAction} type='secondary'>
+          <Button className={styles['confirmation-button']} onClick={confirmActions?.cancelAction} variant='secondary'>
             Cancel
           </Button>
         </div>

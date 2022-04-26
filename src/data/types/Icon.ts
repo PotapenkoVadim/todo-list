@@ -8,5 +8,6 @@ export type IconColor =
   | 'black'
   | 'white'
   | 'gray'
+  | 'red'
   | 'main'
   | 'secondary';

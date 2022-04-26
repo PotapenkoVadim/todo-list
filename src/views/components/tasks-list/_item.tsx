@@ -4,6 +4,7 @@ import { useTodoStore } from '../../../data/stores/todo.store';
 import { useUpdateTaskModalStore } from '../../../data/stores/updateTaskModal.store';
 import Button from '../ui-kit/button/button';
 import FormCheckbox from '../ui-kit/form/_checkbox';
+import Icon from '../ui-kit/icon/icon';
 import styles from './tasks-list.module.scss';
 
 export default function TasksListItem({ task }: { task: Task }): JSX.Element {
@@ -35,8 +36,19 @@ export default function TasksListItem({ task }: { task: Task }): JSX.Element {
 
       {!task.isComplete && (
         <div className={styles['taskslist-item-actions']}>
-          <Button onClick={() => openUpdateTaskModal(task)}>Update</Button>
-          <Button onClick={() => openConfirmationModal(confirmActions)}>Delete</Button>
+          <Button
+            className={styles['taskslist-item-button']}
+            variant='outline'
+            onClick={() => openUpdateTaskModal(task)}>
+            <Icon variant='edit' color='white' />
+          </Button>
+
+          <Button
+            className={styles['taskslist-item-button']}
+            variant='outline'
+            onClick={() => openConfirmationModal(confirmActions)}>
+            <Icon variant='delete' color='red' />
+          </Button>
         </div>
       )}
     </div>
