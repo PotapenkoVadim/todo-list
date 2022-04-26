@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.icon { width: 30px; height: 30px; display: inline-block; background-image: url('../../../../public/icons.svg');
+  background-position: var(--bg-position);
+
+  &__mask { mask-image: url('../../../../public/icons.svg'); mask-position: var(--bg-position); background: var(--bg-color);
+    -webkit-mask-image: url('../../../../public/icons.svg'); -webkit-mask-position: var(--bg-position);
+  }
+  &__hoveredmask:hover { mask-image: url('../../../../public/icons.svg'); mask-position: var(--bg-position); background: var(--bg-color);
+    -webkit-mask-image: url('../../../../public/icons.svg'); -webkit-mask-position: var(--bg-position);
+  }
+
+  &__black {--bg-color: #{$black};}
+  &__white {--bg-color: #{$white};}
+  &__gray {--bg-color: #9ea6b6;}
+  &__main {--bg-color: #{$main};}
+  &__secondary {--bg-color: #{$secondary};}
+
+  &-delete { --bg-position: -265px -20px; }
+  &-edit { --bg-position: -230px -20px; }
+  &-triangledown {--bg-position: -265px -55px;}
+  &-filter {--bg-position: -682px -55px;}
+}
