@@ -1,5 +1,6 @@
 import create from 'zustand';
-import { StorageKeyEnum } from '../enums';
+import { SortMode, StorageKeyEnum } from '../enums';
+import { sortArrayBy } from '../helpers';
 import updateLocalStorage from '../middlewares/update-local-storage';
 import { Task, Todo } from '../models';
 import { LocalStorageService } from '../services';
@@ -32,5 +33,11 @@ export const useTodoStore = create<Todo>(updateLocalStorage((set, get) => new To
     if (tasks) {
       set({ tasks });
     }
+  },
+  sortTasks: (field: string, mode: SortMode): void => {
+    const { tasks } = get();
+    const sortedTasks = sortArrayBy(tasks, field, mode);
+
+    set({ tasks: sortedTasks });
   }
 })));

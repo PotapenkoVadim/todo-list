@@ -13,14 +13,13 @@ export default function App(): JSX.Element {
   const [tasks, createTask, init] = useTodoStore((state) => [state.tasks, state.createTask, state.init]);
 
   const createNewTask = (credentialsTask: Task): void => {
-    const newTask = new Task({
+    createTask(new Task({
       ...credentialsTask,
       id: generateID(),
       createdAt: Date.now(),
-      isComplete: false
-    });
-
-    createTask(newTask);
+      isComplete: false,
+      order: tasks.length
+    }));
   };
 
   useEffect(() => init(), []);

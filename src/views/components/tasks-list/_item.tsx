@@ -37,14 +37,14 @@ export default function TasksListItem({ task }: { task: Task }): JSX.Element {
       {!task.isComplete && (
         <div className={styles['taskslist-item-actions']}>
           <Button
-            className={styles['taskslist-item-button']}
+            className={styles['taskslist-button']}
             variant='outline'
             onClick={() => openUpdateTaskModal(task)}>
             <Icon variant='edit' color='white' />
           </Button>
 
           <Button
-            className={styles['taskslist-item-button']}
+            className={styles['taskslist-button']}
             variant='outline'
             onClick={() => openConfirmationModal(confirmActions)}>
             <Icon variant='delete' color='red' />
