@@ -7,6 +7,7 @@ export class Todo {
   public updateTask: (id: string, updatedTask: Task) => void;
   public removeTask: (id: string) => void;
   public sortTasks: (field: string, mode: SortMode) => void;
+  public changeOrderTask: (fromTaskID: string, toTaskID: string) => void;
   public init: () => void;
 
   constructor(model: Partial<Todo> = {}) {

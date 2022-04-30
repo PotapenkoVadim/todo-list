@@ -2,7 +2,8 @@ export type IconVariant =
   | 'delete'
   | 'edit'
   | 'triangledown'
-  | 'filter';
+  | 'filter'
+  | 'draggble';
 
 export type IconColor =
   | 'black'

@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 import styles from './index.module.scss';
 import { useTodoStore } from '../../data/stores/todo.store';
 import TaskForm from '../components/task-form/task-form';
@@ -7,7 +10,6 @@ import TasksList from '../components/tasks-list/tasks-list';
 import UpdateTaskModal from '../components/modals/update-task/update-task';
 import ConfirmationModal from '../components/modals/confirmation/confirmation';
 import configuration from '../../data/configuration';
-import { useEffect } from 'react';
 
 export default function App(): JSX.Element {
   const [tasks, createTask, init] = useTodoStore((state) => [state.tasks, state.createTask, state.init]);
@@ -25,19 +27,21 @@ export default function App(): JSX.Element {
   useEffect(() => init(), []);
 
   return (
-    <main className={styles['app']}>
-      <span className={styles['app-version']}>v{configuration.version}</span>
-      <h1 className={styles['app-title']}>{configuration.appName}</h1>
-      <section className={styles['app-section']}>
-        <TaskForm onSubmit={createNewTask} />
-      </section>
+    <DndProvider backend={HTML5Backend}>
+      <main className={styles['app']}>
+        <span className={styles['app-version']}>v{configuration.version}</span>
+        <h1 className={styles['app-title']}>{configuration.appName}</h1>
+        <section className={styles['app-section']}>
+          <TaskForm onSubmit={createNewTask} />
+        </section>
 
-      <section className={styles['app-section']}>
-        <TasksList tasks={tasks} />
-      </section>
+        <section className={styles['app-section']}>
+          <TasksList tasks={tasks} />
+        </section>
 
-      <UpdateTaskModal />
-      <ConfirmationModal />
-    </main>
+        <UpdateTaskModal />
+        <ConfirmationModal />
+      </main>
+    </DndProvider>
   );
 }

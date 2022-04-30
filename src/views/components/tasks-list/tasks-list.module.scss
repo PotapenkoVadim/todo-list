@@ -5,11 +5,15 @@
     background-color: $main; color: $white; box-shadow: 3px 3px 10px $light-gray; display: flex; justify-content: space-between;
     align-items: center;
 
+    &-info { display: flex; align-items: center; gap: 12px; }
+    &-draggble { cursor: grabbing; }
     &-title { font-size: 1.1rem; font-weight: bold; user-select: none; }
     &-title_underline { text-decoration: line-through; }
     &-actions { display: flex; justify-content: space-around; align-items: center; gap: 10px; }
+
+    &__dragging { opacity: 0.5; }
   }
   
-  &-actions { position: sticky; top: 0; background-color: $white; z-index: 999; padding-bottom: 12px; }
+  &-actions { position: sticky; top: 0; background-color: $white; z-index: 999; }
   &-button { padding: 0; }
 }
