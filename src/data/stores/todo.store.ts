@@ -38,9 +38,9 @@ export const useTodoStore = create<Todo>(updateLocalStorage((set, get) => new To
     const { tasks } = get();
     const sortedTasks = sortArrayBy(tasks, field, mode);
 
-    set({ tasks: sortedTasks.map((task, index) => Object.assign(task, {order: index})) });
+    set({ tasks: sortedTasks });
   },
-  changeOrderTask: (fromTaskID: string, toTaskID: string): void => {
+  dropTask: (fromTaskID: string, toTaskID: string): void => {
     const { tasks } = get();
     const changedTask = changeOrderTasks(tasks, fromTaskID, toTaskID);
 

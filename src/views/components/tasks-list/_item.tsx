@@ -11,7 +11,7 @@ import Icon from '../ui-kit/icon/icon';
 import styles from './tasks-list.module.scss';
 
 export default function TasksListItem({ task }: { task: Task }): JSX.Element {
-  const [updateTask, removeTask, changeOrderTask] = useTodoStore((state) => [state.updateTask, state.removeTask, state.changeOrderTask]);
+  const [updateTask, removeTask, dropTask] = useTodoStore((state) => [state.updateTask, state.removeTask, state.dropTask]);
   const [openUpdateTaskModal ] = useUpdateTaskModalStore((state) => [state.openModal]);
   const [openConfirmationModal, closeConfirmationModal] = useConfirmationModalStore((state) => [state.openModal, state.closeModal]);
 
@@ -23,7 +23,7 @@ export default function TasksListItem({ task }: { task: Task }): JSX.Element {
 
   const [_, drop] = useDrop(() => ({
     accept: DndItem.TASK,
-    drop: (item: Task) => changeOrderTask(item.id, task.id),
+    drop: (item: Task) => dropTask(item.id, task.id),
     collect: (monitor) => ({ isOver: !!monitor.isOver() })
   }));
 

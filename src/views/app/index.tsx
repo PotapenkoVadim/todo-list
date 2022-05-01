@@ -19,8 +19,7 @@ export default function App(): JSX.Element {
       ...credentialsTask,
       id: generateID(),
       createdAt: Date.now(),
-      isComplete: false,
-      order: tasks.length
+      isComplete: false
     }));
   };
 

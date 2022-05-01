@@ -18,5 +18,5 @@ export const changeOrderTasks = (tasks: Array<Task>, fromItemID: string, toItemI
   updatedTasks.splice(fromIndex, 1);
   updatedTasks.splice((fromIndex > toIndex) ? toIndex : toIndex, 0, tasks[fromIndex]);
 
-  return updatedTasks.map((item, index) => ({ ...item, order: index }));
+  return updatedTasks;
 };
