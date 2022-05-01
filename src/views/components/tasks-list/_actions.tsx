@@ -59,13 +59,10 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
   return (
     <div className={styles['taskslist-actions']}>
       {tasks?.length ? (
-        <FormCheckbox
-          onChange={handleCheckboxChange}
-          checked={isCompletedTasks} />
-      ) : null}
-
-      {tasks?.length ? (
         <>
+          <FormCheckbox
+            onChange={handleCheckboxChange}
+            checked={isCompletedTasks} />
           <Button
             onClick={sortTasks}
             className={styles['taskslist-button']}
