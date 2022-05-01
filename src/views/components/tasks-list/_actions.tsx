@@ -5,6 +5,7 @@ import { FilterMode } from '../../../data/enums';
 import { Task } from '../../../data/models';
 import { useConfirmationModalStore } from '../../../data/stores/confirmationModal.store';
 import { useTodoStore } from '../../../data/stores/todo.store';
+import { TaskSelectOption } from '../../../data/types';
 import Button from '../ui-kit/button/button';
 import FormCheckbox from '../ui-kit/form/_checkbox';
 import FormSelect from '../ui-kit/form/_select';
@@ -30,6 +31,12 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
   const [sortIndex, setSortIndex] = useState(1);
   const [isCompletedTasks, setIsCompletedTasks] = useState(false);
   const [countCompletedTasks, setCountCompletedtasks] = useState(0);
+
+  const options: Array<TaskSelectOption> = [
+    { value: FilterMode.ALL, label: 'All'},
+    { value: FilterMode.COMPLETE, label: 'Completed tasks'},
+    { value: FilterMode.INCOMPLETE, label: 'Incompleted tasks'},
+  ];
 
   useEffect(() => {
     if (tasks) {
@@ -59,7 +66,7 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
   };
 
   const handleCheckboxChange = () :void => toggleCompleteTasks(!isCompletedTasks);
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void =>  changeFilterMode(event.target.value as FilterMode);
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => changeFilterMode(event.target.value as FilterMode);
 
   return (
     <div className={styles['taskslist-actions']}>
@@ -101,11 +108,7 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
         <FormSelect
           onChange={handleSelectChange}
           value={filterValue}
-          options={[
-            { value: FilterMode.ALL, label: 'All'},
-            { value: FilterMode.COMPLETE, label: 'Completed tasks'},
-            { value: FilterMode.INCOMPLETE, label: 'Incompleted tasks'},
-          ]} />
+          options={options} />
       </div>
 
       <ReactTooltip place='bottom' effect='solid' />
