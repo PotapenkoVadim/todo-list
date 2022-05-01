@@ -16,6 +16,7 @@
   
   &-actions { position: sticky; top: 0; background-color: $white; z-index: 999; display: flex; align-items: center; gap: 12px; padding: 0 15px;
     &-tasks { display: flex; align-items: center; color: $light-gray; }
+    &-select { margin-left: auto; }
   }
   &-button { padding: 0; }
 }

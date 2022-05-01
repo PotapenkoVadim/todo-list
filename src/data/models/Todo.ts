@@ -1,8 +1,9 @@
-import { SortMode } from '../enums';
+import { FilterMode, SortMode } from '../enums';
 import { Task } from './Task';
 
 export class Todo {
   public tasks: Array<Task>;
+  public filterValue: FilterMode;
   public createTask: (newTask: Task) => void;
   public updateTask: (id: string, updatedTask: Task) => void;
   public removeTask: (id: string) => void;
@@ -10,6 +11,7 @@ export class Todo {
   public dropTask: (fromTaskID: string, toTaskID: string) => void;
   public toggleCompleteTasks: (isComplete: boolean) => void;
   public deleteTasks: () => void;
+  public changeFilterMode: (filterValue: FilterMode) => void;
   public init: () => void;
 
   constructor(model: Partial<Todo> = {}) {

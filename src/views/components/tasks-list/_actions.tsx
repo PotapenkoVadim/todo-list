@@ -1,22 +1,28 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import configuration from '../../../data/configuration';
+import { FilterMode } from '../../../data/enums';
 import { Task } from '../../../data/models';
 import { useConfirmationModalStore } from '../../../data/stores/confirmationModal.store';
 import { useTodoStore } from '../../../data/stores/todo.store';
 import Button from '../ui-kit/button/button';
 import FormCheckbox from '../ui-kit/form/_checkbox';
+import FormSelect from '../ui-kit/form/_select';
 import Icon from '../ui-kit/icon/icon';
 import styles from './tasks-list.module.scss';
 
 export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX.Element {
   const [
+    filterValue,
     sortTasksAction,
     toggleCompleteTasks,
-    deleteTasks
+    deleteTasks,
+    changeFilterMode
   ] = useTodoStore((state) => [
+    state.filterValue,
     state.sortTasks,
     state.toggleCompleteTasks,
-    state.deleteTasks
+    state.deleteTasks,
+    state.changeFilterMode
   ]);
   const [openConfirmationModal, closeConfirmationModal] = useConfirmationModalStore((state) => [state.openModal, state.closeModal]);
 
@@ -47,33 +53,52 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
     cancelAction: () => closeConfirmationModal()
   };
 
-  const handleCheckboxChange = () => toggleCompleteTasks(!isCompletedTasks);
-
+  const handleCheckboxChange = () :void => toggleCompleteTasks(!isCompletedTasks);
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void =>  changeFilterMode(event.target.value as FilterMode);
 
   return (
     <div className={styles['taskslist-actions']}>
-      <FormCheckbox onChange={handleCheckboxChange} checked={isCompletedTasks} />
+      {tasks?.length ? (
+        <FormCheckbox
+          onChange={handleCheckboxChange}
+          checked={isCompletedTasks} />
+      ) : null}
 
-      <Button
-        onClick={sortTasks}
-        className={styles['taskslist-button']}
-        variant='outline'>
-        <Icon variant='filter' color='gray' />
-      </Button>
+      {tasks?.length ? (
+        <>
+          <Button
+            onClick={sortTasks}
+            className={styles['taskslist-button']}
+            variant='outline'>
+            <Icon variant='filter' color='gray' />
+          </Button>
 
-      <Button
-        onClick={() => openConfirmationModal(confirmActions)}
-        className={styles['taskslist-button']}
-        variant='outline'>
-        <Icon variant='delete' color='red' />
-      </Button>
+          <Button
+            onClick={() => openConfirmationModal(confirmActions)}
+            className={styles['taskslist-button']}
+            variant='outline'>
+            <Icon variant='delete' color='red' />
+          </Button>
+        </>
+      ) : null}
 
-      {countCompletedTasks ? (
+      {tasks?.length && countCompletedTasks ? (
         <div className={styles['taskslist-actions-tasks']}>
           <Icon variant='arrow-right' color='gray' />
           {countCompletedTasks}
         </div>
       ) : null}
+
+      <div className={styles['taskslist-actions-select']}>
+        <FormSelect
+          onChange={handleSelectChange}
+          value={filterValue}
+          options={[
+            { value: FilterMode.ALL, label: 'All'},
+            { value: FilterMode.COMPLETE, label: 'Completed tasks'},
+            { value: FilterMode.INCOMPLETE, label: 'Incompleted tasks'},
+          ]} />
+      </div>
     </div>
   );
 }
