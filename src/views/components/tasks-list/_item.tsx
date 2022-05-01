@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import configuration from '../../../data/configuration';
 import { DndItem } from '../../../data/enums';
 import { Task } from '../../../data/models';
 import { useConfirmationModalStore } from '../../../data/stores/confirmationModal.store';
@@ -30,7 +31,7 @@ export default function TasksListItem({ task }: { task: Task }): JSX.Element {
   const changeTaskStatus = () => updateTask(task.id, new Task({ ...task, isComplete: !task.isComplete }));
 
   const confirmActions = {
-    title: 'Are you sure you want to delete task?',
+    title: configuration.notification.deleteTaskTitle,
     confirmAction: () => {
       removeTask(task.id);
       closeConfirmationModal();

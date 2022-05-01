@@ -51,5 +51,6 @@ export const useTodoStore = create<Todo>(updateLocalStorage((set, get) => new To
     const completedTasks = tasks.map((tasks) => Object.assign(tasks, { isComplete }));
 
     set({ tasks: completedTasks });
-  }
+  },
+  deleteTasks: (): void => set({ tasks: [] })
 })));

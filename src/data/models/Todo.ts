@@ -9,6 +9,7 @@ export class Todo {
   public sortTasks: (field: string, mode: SortMode) => void;
   public dropTask: (fromTaskID: string, toTaskID: string) => void;
   public toggleCompleteTasks: (isComplete: boolean) => void;
+  public deleteTasks: () => void;
   public init: () => void;
 
   constructor(model: Partial<Todo> = {}) {
