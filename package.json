@@ -12,6 +12,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.0.0",
+    "react-tooltip": "^4.2.21",
     "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import ReactTooltip from 'react-tooltip';
 import configuration from '../../../data/configuration';
 import { FilterMode } from '../../../data/enums';
 import { Task } from '../../../data/models';
@@ -39,6 +40,10 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
     }
   }, [tasks]);
 
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  }, [tasks, countCompletedTasks]);
+
   const sortTasks = () => {
     sortTasksAction('title', sortIndex);
     setSortIndex(sortIndex * -1);
@@ -63,24 +68,30 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
           <FormCheckbox
             onChange={handleCheckboxChange}
             checked={isCompletedTasks} />
-          <Button
-            onClick={sortTasks}
-            className={styles['taskslist-button']}
-            variant='outline'>
-            <Icon variant='filter' color='gray' />
-          </Button>
-
-          <Button
-            onClick={() => openConfirmationModal(confirmActions)}
-            className={styles['taskslist-button']}
-            variant='outline'>
-            <Icon variant='delete' color='red' />
-          </Button>
+            
+          <div data-tip={configuration.notification.sortTasksTooltip}>
+            <Button
+              onClick={sortTasks}
+              className={styles['taskslist-button']}
+              variant='outline'>
+              <Icon variant='filter' color='gray' />
+            </Button>
+          </div>
+          <div data-tip={configuration.notification.deleteTasksTooltip}>
+            <Button
+              onClick={() => openConfirmationModal(confirmActions)}
+              className={styles['taskslist-button']}
+              variant='outline'>
+              <Icon variant='delete' color='red' />
+            </Button>
+          </div>
         </>
       ) : null}
 
       {tasks?.length && countCompletedTasks ? (
-        <div className={styles['taskslist-actions-tasks']}>
+        <div
+          data-tip={configuration.notification.countCompletedTasks}
+          className={styles['taskslist-actions-tasks']}>
           <Icon variant='arrow-right' color='gray' />
           {countCompletedTasks}
         </div>
@@ -96,6 +107,8 @@ export default function TasksListActions({ tasks }: { tasks: Array<Task> }): JSX
             { value: FilterMode.INCOMPLETE, label: 'Incompleted tasks'},
           ]} />
       </div>
+
+      <ReactTooltip place='bottom' effect='solid' />
     </div>
   );
 }
