@@ -10,7 +10,7 @@ export default function TasksList({ tasks }: { tasks: Array<Task> }): JSX.Elemen
     <div className={styles['taskslist']}>
       {tasks.length
         ? <div className={styles['taskslist-list']}>
-            <TasksListActions />
+            <TasksListActions tasks={tasks} />
             {tasks.map(item => <TasksListItem key={item.id} task={item} />)}
           </div>
         : <Notification text={configuration.notification.emptyList} />

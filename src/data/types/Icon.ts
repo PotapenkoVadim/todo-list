@@ -3,7 +3,8 @@ export type IconVariant =
   | 'edit'
   | 'triangledown'
   | 'filter'
-  | 'draggble';
+  | 'draggble'
+  | 'arrow-right';
 
 export type IconColor =
   | 'black'

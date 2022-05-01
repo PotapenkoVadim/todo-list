@@ -3,7 +3,7 @@ import styles from './form.module.scss';
 
 export default function FormCheckbox(
   { checked, className, onChange, children }:
-  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & { children: ReactNode }
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & { children?: ReactNode }
 ): JSX.Element {
   return (
     <div className={`${styles['form-group']} ${styles['form-checkbox']} ${className ? className : ''}`}>

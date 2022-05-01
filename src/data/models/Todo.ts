@@ -8,6 +8,7 @@ export class Todo {
   public removeTask: (id: string) => void;
   public sortTasks: (field: string, mode: SortMode) => void;
   public dropTask: (fromTaskID: string, toTaskID: string) => void;
+  public toggleCompleteTasks: (isComplete: boolean) => void;
   public init: () => void;
 
   constructor(model: Partial<Todo> = {}) {

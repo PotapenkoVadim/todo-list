@@ -45,5 +45,11 @@ export const useTodoStore = create<Todo>(updateLocalStorage((set, get) => new To
     const changedTask = changeOrderTasks(tasks, fromTaskID, toTaskID);
 
     set({ tasks: changedTask });
+  },
+  toggleCompleteTasks: (isComplete: boolean): void => {
+    const { tasks } = get();
+    const completedTasks = tasks.map((tasks) => Object.assign(tasks, { isComplete }));
+
+    set({ tasks: completedTasks });
   }
 })));
